@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7969c0a0-36a2-4620-82c8-b85ecabe83a1" name="Default" comment="" />
+    <list default="true" id="7969c0a0-36a2-4620-82c8-b85ecabe83a1" name="Default" comment="Sm">
+      <change type="DELETED" beforePath="D:\GitHub\Dec-portal\auth-file.php" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth-db.php" afterPath="$PROJECT_DIR$/auth-db.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Dec-portal.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,6 +20,11 @@
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints />
+  </component>
+  <component name="DatabaseView">
+    <flatten value="false" />
+    <groupTables value="false" />
+    <sortChildren value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
@@ -41,6 +50,7 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/config-ldap.php" />
+        <option value="$PROJECT_DIR$/auth-db.php" />
       </list>
     </option>
   </component>
@@ -103,13 +113,14 @@
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="reference.settingsdialog.IDE.editor.colors" />
-    <property name="last_opened_file_path" value="D:/Git/Declarations" />
+    <property name="options.lastSelected" value="SQL Dialects" />
+    <property name="last_opened_file_path" value="$USER_HOME$/.WebIde70" />
     <property name="FullScreen" value="false" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="dynamic.classpath" value="false" />
   </component>
-  <component name="PublishConfig" serverName="home.bit" serverId="df177e78-fe5e-405b-bd58-6e7fc2ed647f">
+  <component name="PublishConfig" serverName="home.bit - decl" serverId="df177e78-fe5e-405b-bd58-6e7fc2ed647f">
     <servers>
       <server id="df177e78-fe5e-405b-bd58-6e7fc2ed647f">
         <serverdata>
@@ -132,6 +143,12 @@
       <method />
     </configuration>
     <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="df177e78-fe5e-405b-bd58-6e7fc2ed647f" server_name="home.bit">
+      <method />
+    </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <list size="0" />
@@ -169,7 +186,7 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297619" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24940476" sideWeight="0.6707727" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -177,6 +194,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32922733" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -200,32 +218,74 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/auth-db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="40" column="24" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1836" />
+        <state line="41" column="11" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
+          <folding />
+        </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/auth-file.php">
+    <entry file="file://$PROJECT_DIR$/download.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="108" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/page-admins.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="24" selection-start="792" selection-end="792" vertical-scroll-proportion="0.47086802" vertical-offset="0" max-vertical-offset="1962" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="841" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config-db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="189" selection-end="189" vertical-scroll-proportion="0.42778793" vertical-offset="0" max-vertical-offset="547" />
+        <state line="15" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="884">
+          <folding>
+            <marker date="1383789868000" expanded="true" signature="-1:-1" placeholder="SELECT `type..files..." />
+          </folding>
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/auth-db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="17" selection-start="2105" selection-end="2105" vertical-scroll-proportion="1.5969085" vertical-offset="51" max-vertical-offset="1836" />
+        <state line="41" column="11" selection-start="969" selection-end="969" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1836">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/download.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="884">
+          <folding>
+            <marker date="1383789868000" expanded="true" signature="-1:-1" placeholder="SELECT `type..files..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="40" column="24" selection-start="1005" selection-end="1005" vertical-scroll-proportion="0.0" vertical-offset="680" max-vertical-offset="1836" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page-admins.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="11" selection-start="1868" selection-end="1868" vertical-scroll-proportion="0.5755054" vertical-offset="553" max-vertical-offset="1853" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/download.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="14" selection-start="279" selection-end="279" vertical-scroll-proportion="-8.153846" vertical-offset="43" max-vertical-offset="884">
+          <folding>
+            <marker date="1383789868000" expanded="true" signature="-1:-1" placeholder="SELECT `type..files..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config-db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="2" selection-start="189" selection-end="189" vertical-scroll-proportion="0.2627824" vertical-offset="0" max-vertical-offset="841">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="170">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/auth-db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="83" column="7" selection-start="2022" selection-end="2022" vertical-scroll-proportion="1.6777645" vertical-offset="0" max-vertical-offset="1836">
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

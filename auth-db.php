@@ -6,7 +6,7 @@ if(!session_name()) {
     exit;
 };
 
-// Import LDAP config
+// Import DB config
 include_once ('config-db.php');
 
 // Logout
@@ -28,14 +28,14 @@ if(mysqli_connect_errno()) {
             exit;
 }
 
-// File-requests go to download.php
+// File-requests
 if(isset($_GET['get_file']) && isset($_SESSION['user_id'])) {
       include('download.php');
       mysqli_close($db);
       exit;
 }
 
-// User-list requests go to page-admins-list.php
+// User-list requests
 if(isset($_GET['user_list']) && isset($_SESSION['admin'])) {
       include('page-admins-list.php');
       mysqli_close($db);
@@ -49,14 +49,14 @@ if(isset($_GET['inn']) && isset($_SESSION['admin'])) {
       exit;
 }
 
-// Authorized admins go to page-admins.php
+// Authorized admins
 if (isset($_SESSION['admin'])) {
       include('page-admins.php');
       mysqli_close($db);
       exit;
 }
 
-// Authorized users go to page-users.php
+// Authorized users
 if (isset($_SESSION['user_id'])) {
       include('page-users.php');
       mysqli_close($db);
