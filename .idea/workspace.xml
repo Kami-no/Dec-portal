@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7969c0a0-36a2-4620-82c8-b85ecabe83a1" name="Default" comment="Sm">
-      <change type="DELETED" beforePath="D:\GitHub\Dec-portal\auth-file.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/auth-db.php" afterPath="$PROJECT_DIR$/auth-db.php" />
+    <list default="true" id="7969c0a0-36a2-4620-82c8-b85ecabe83a1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Dec-portal.iws" />
@@ -177,12 +175,18 @@
       <created>1384836569261</created>
       <updated>1384836569261</updated>
     </task>
+    <task id="LOCAL-00001" summary="Nothing special">
+      <created>1385103680393</created>
+      <updated>1385103680393</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="false" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -211,6 +215,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Nothing special" />
+    <option name="LAST_COMMIT_MESSAGE" value="Nothing special" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
