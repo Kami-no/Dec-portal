@@ -80,6 +80,31 @@ for($i=0; $i<count($user_list); $i++) {
 
 echo '</table>';
 
+// List of users without pass and e-mail
+$query = 'SELECT * FROM `users` WHERE `pass` = NULL OR `mail` = NULL';
+$result = mysqli_query($db,$query);
+$user_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
+mysqli_free_result($result);
+
+echo '
+    <h2>Список пользователей без пароля или почты</h2>
+    <table align="center" class="atable" border="1"><thead>
+    <TR>
+    <TH>INN</TH>
+    <TH>PASS</TH>
+    <TH>Mail</TH>
+    </TR></thead><tbody>';
+
+for($i=0; $i<count($user_list); $i++) {
+    echo '<TR>
+        <TD>'.$user_list[$i]['inn'].' </TD>
+        <TD>'.$user_list[$i]['pass'].' </TD>
+        <TD>'.$user_list[$i]['mail'].' </TD>
+        </TR>';
+}
+
+echo '</table>';
+
 // File upload
 echo '<h2>Загрузка файлов на сервер (пока по одному)</h2>
     <form method="post" enctype="multipart/form-data">
