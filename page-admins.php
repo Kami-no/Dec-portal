@@ -7,45 +7,44 @@ if(!session_name()) {
 }
 
 // Check if a file has been uploaded
-if(isset($_FILES['uploaded_file'])) {
-    // Make sure the file was sent without errors
-    if($_FILES['uploaded_file']['error'] == 0) {
-        // Gather all required data
-        $name_u = $db->real_escape_string($_FILES['uploaded_file']['name']);
-        $type = $db->real_escape_string($_FILES['uploaded_file']['type']);
-        $content = $db->real_escape_string(file_get_contents($_FILES  ['uploaded_file']['tmp_name']));
-        $size = intval($_FILES['uploaded_file']['size']);
-        $name_pre = explode('.',$name_u);
-        $name = explode('-',$name_pre[0]);
-        
-        // Create the SQL query
-        $query = "
-            INSERT INTO `files` (
-                `inn`, `kpp`, `period`, `size`, `type`, `content`, `date`
-            )
-            VALUES (
-                '$name[0]', '$name[1]', '$name[2]', '$size', '$type', '$content', NOW()
-            )";
+if(isset($_FILES['uploaded_files'])) {
+    foreach($_FILES['uploaded_files']['tmp_name'] as $key => $tmp_name ){
+        // Make sure the file was sent without errors
+        //if($_FILES['uploaded_files']['error'] == 0) {
+            // Gather all required data
+            $name_u = $db->real_escape_string($_FILES['uploaded_files']['name'][$key]);
+            $type = $db->real_escape_string($_FILES['uploaded_files']['type'][$key]);
+            $content = $db->real_escape_string(file_get_contents($_FILES  ['uploaded_files']['tmp_name'][$key]));
+            $size = intval($_FILES['uploaded_files']['size'][$key]);
+            $name_pre = explode('.',$name_u);
+            $name = explode('-',$name_pre[0]);
 
-        // Execute the query
-        $result = $db->query($query);
+            // Create the SQL query
+            $query = "
+                INSERT INTO `files` (
+                    `inn`, `kpp`, `period`, `size`, `type`, `content`, `date`
+                )
+                VALUES (
+                    '$name[0]', '$name[1]', '$name[2]', '$size', '$type', '$content', NOW()
+                )";
 
-        // Check if it was successfull
-        if($result) {
-            $msg = 'Success! Your file was successfully added!';
-        }
-        else {
-            $msg = 'Error! Failed to insert the file'
-               . "<pre>{$db->error}</pre>";
-        }
+            // Execute the query
+            $result = $db->query($query);
+
+            // Check if it was successfull
+            if($result) {
+                $msg = 'Success! Your file was successfully added!';
+            } else {
+                $msg = 'Error! Failed to insert the file'
+                   . "<pre>{$db->error}</pre>";
+            }
+        //} else {
+        //    $msg = 'An error accured while the file was being uploaded. '
+        //       . 'Error code: '. intval($_FILES['uploaded_files']['error']);
+        //}
     }
-    else {
-        $msg = 'An error accured while the file was being uploaded. '
-           . 'Error code: '. intval($_FILES['uploaded_file']['error']);
-    }
 
-}
-else {
+} else {
     $msg = '';
 }
 
@@ -106,14 +105,14 @@ for($i=0; $i<count($user_list); $i++) {
 echo '</table>';
 
 // File upload
-echo '<h2>Загрузка файлов на сервер (пока по одному)</h2>
+echo '<h2>Загрузка файлов на сервер (можно несколько сразу)</h2>
     <form method="post" enctype="multipart/form-data">
     <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
-        <tr><td>please select a file</td></tr>
+        <tr><td>Выбирете файлы</td></tr>
         <tr>
             <td>
                 <input type="hidden" name="MAX_FILE_SIZE" value="16000000">
-                <input name="uploaded_file" type="file"> 
+                <input name="uploaded_files[]" type="file" multiple>
             </td>
             <td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
         </tr>
