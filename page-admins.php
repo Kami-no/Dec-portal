@@ -8,6 +8,7 @@ if(!session_name()) {
 
 // Check if a file has been uploaded
 if(isset($_FILES['uploaded_files'])) {
+
     foreach($_FILES['uploaded_files']['tmp_name'] as $key => $tmp_name ){
         // Make sure the file was sent without errors
         //if($_FILES['uploaded_files']['error'] == 0) {
@@ -48,61 +49,59 @@ if(isset($_FILES['uploaded_files'])) {
     $msg = '';
 }
 
+echo '<!DOCTYPE html>
+    <meta charset="utf-8">
+    <title>Служба деклараций</title>
+    <h1>Админ</h1>';
+
 // Admins list
-$query = 'SELECT * FROM `users` WHERE `admin` = 1';
+$query = 'SELECT `mail` FROM `users` WHERE `admin` = 1';
 $result = mysqli_query($db,$query);
 $user_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$user_n = mysqli_num_rows($result);
 mysqli_free_result($result);
 
-echo '
-    <html><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Служба деклараций</title>
-    </head>
-    <body>
-    <h1>Админ</h1>
-    <h2>Список админов</h2>
-    <table align="center" class="atable" border="1"><thead>
-    <TR>
-    <TH>INN</TH>
-    <TH>PASS</TH>
-    <TH>Mail</TH>
-    </TR></thead><tbody>';
+if($user_n!=1) {
+    echo '<h2>Список админов</h2>
+        <table align="center" class="atable" border="1"><thead>
+            <tr><th>Mail</th></tr>
+        </thead><tbody>';
 
-for($i=0; $i<count($user_list); $i++) {
-    echo '<TR>
-        <TD>'.$user_list[$i]['inn'].' </TD>
-        <TD>'.$user_list[$i]['pass'].' </TD>
-        <TD>'.$user_list[$i]['mail'].' </TD>
-        </TR>';
+    for($i=0; $i<count($user_list); $i++) {
+        echo '<tr>
+            <td>'.$user_list[$i]['mail'].' </td>
+            </tr>';
+    }
+
+    echo '</table>';
 }
-
-echo '</table>';
 
 // List of users without pass and e-mail
 $query = 'SELECT * FROM `users` WHERE `pass` = NULL OR `mail` = NULL';
 $result = mysqli_query($db,$query);
 $user_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
+$user_n = mysqli_num_rows($result);
 mysqli_free_result($result);
 
-echo '
-    <h2>Список пользователей без пароля или почты</h2>
-    <table align="center" class="atable" border="1"><thead>
-    <TR>
-    <TH>INN</TH>
-    <TH>PASS</TH>
-    <TH>Mail</TH>
-    </TR></thead><tbody>';
+if($user_n!=0) {
+    echo '<h2>Список пользователей без пароля или почты</h2>
+        <table align="center" class="atable" border="1"><thead>
+        <tr>
+        <th>INN</th>
+        <th>PASS</th>
+        <th>Mail</th>
+        </tr></thead><tbody>';
 
-for($i=0; $i<count($user_list); $i++) {
-    echo '<TR>
-        <TD>'.$user_list[$i]['inn'].' </TD>
-        <TD>'.$user_list[$i]['pass'].' </TD>
-        <TD>'.$user_list[$i]['mail'].' </TD>
-        </TR>';
+    for($i=0; $i<count($user_list); $i++) {
+        echo '<tr>
+            <td>'.$user_list[$i]['inn'].' </td>
+            <td>'.$user_list[$i]['pass'].' </td>
+            <td>'.$user_list[$i]['mail'].' </td>
+            </tr>';
+    }
+
+    echo '</table>';
 }
-
-echo '</table>';
 
 // File upload
 echo '<h2>Загрузка файлов на сервер (можно несколько сразу)</h2>
@@ -122,7 +121,6 @@ echo '<h2>Загрузка файлов на сервер (можно неско
 echo $msg;
 
 echo '<br><a href="index.php?user_list=1">Список пользователей</a>
-    <br><a href="index.php?logout=1">Выйти</a>
-    </body><html>';
+    <br><a href="index.php?logout=1">Выйти</a>';
 
 ?>

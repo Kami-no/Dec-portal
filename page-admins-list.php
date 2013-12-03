@@ -12,33 +12,27 @@ $result = mysqli_query($db,$query);
 $user_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
 mysqli_free_result($result);
 
-echo '
-    <html><head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+echo '<!DOCTYPE html>
+    <meta charset="utf-8">
     <title>Служба деклараций</title>
-    </head>
-    <body>
     <h1><a href="index.php">Админ</a>: список пользователей</h1>
     <table align="center" class="atable" border="1"><thead>
-    <TR>
-    <TH>INN</TH>
-    <TH>PASS</TH>
-    <TH>Mail</TH>
-    </TR></thead><tbody>';
+    <tr>
+        <th>Mail</th>
+        <th>Pass</th>
+    </tr></thead><tbody>';
 
 for($i=0; $i<count($user_list); $i++) {
-    echo '<TR>
-        <TD><a href="index.php?inn='.$user_list[$i]['inn'].'">'.$user_list[$i]['inn'].' </TD>
-        <TD>'.$user_list[$i]['pass'].' </TD>
-        <TD>'.$user_list[$i]['mail'].' </TD>
-        </TR>';
+    echo '<tr>
+        <td><a href="index.php?id='.$user_list[$i]['id'].'">'.$user_list[$i]['mail'].' </td>
+        <td>'.$user_list[$i]['pass'].' </td>
+        </tr>';
 }
 
 echo '</table>';
 
 echo $msg;
 
-echo '<br><a href="index.php?logout=1">Выйти</a>
-    </body><html>';
+echo '<br><a href="index.php?logout=1">Выйти</a>';
 
 ?>
