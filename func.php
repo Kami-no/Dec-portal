@@ -35,5 +35,3 @@ function ldap_group_check($bc_ldap,$bc_user,$bc_group,$bc_base) {
 }
 
 ldap_unbind($ldap);
-
-?>

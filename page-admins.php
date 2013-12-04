@@ -122,5 +122,3 @@ echo $msg;
 
 echo '<br><a href="index.php?user_list=1">Список пользователей</a>
     <br><a href="index.php?logout=1">Выйти</a>';
-
-?>

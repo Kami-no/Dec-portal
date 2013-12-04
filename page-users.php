@@ -42,7 +42,4 @@ for($i=0; $i<count($organizations); $i++) {
             </tr>';
     }
 }
-echo '</table>
-    <br><a href="index.php?logout=1">Выйти</a>;
-
-?>
+echo '</table><br><a href="index.php?logout=1">Выйти</a>';

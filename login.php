@@ -37,5 +37,3 @@ echo '<!DOCTYPE html>
     </td></tr>
     <tr><td width="240" align="center">'.$msg.'</td></tr>
     </table>';
-
-?>

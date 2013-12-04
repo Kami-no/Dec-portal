@@ -6,42 +6,41 @@ if(!session_name()) {
     exit;
 }
 
-$id = intval($_GET['get_file']);
+$file_id = intval($_GET['get_file']);
 
 // Make sure the ID is in fact a valid ID
-if($id <= 0) {
+if($file_id <= 0) {
     die('The ID is invalid!');
 } else {
     // Fetch the file information
-    $query = "
-        SELECT `type`, `inn`, `kpp`, `period`, `size`, `content`
-        FROM `files`
-        WHERE `id` = {$id} AND `inn` = {$_SESSION['user_id']}";
-    $result = $db->query($query);
+    $request = 'SELECT `file_id`, `inn`, `kpp`, `period`, `size`, `type`, `content` FROM `files` WHERE `file_id` = '.$file_id;
+    $result = mysqli_query($db,$request);
+    $file = mysqli_fetch_assoc($result);
+    $file_n = mysqli_num_rows($result);
+    mysqli_free_result ($result);
 
-    if($result) {
-        // Make sure the result is valid
-        if($result->num_rows == 1) {
-            // Get the row
-            $row = mysqli_fetch_assoc($result);
-            $name = $row['inn'].'-'.$row['kpp'].'-'.$row['period'].'.zip';
-
-            // Print headers
-            header("Content-Type: ". $row['type']);
-            header("Content-Length: ". $row['size']);
-            header("Content-Disposition: attachment; filename=". $name);
-
-            // Print data
-            echo $row['content'];
-        } else {
-            echo 'Error! No image exists with that ID.';
-        }
-
-        // Free the mysqli resources
-        @mysqli_free_result($result);
+    // Verify if user is authorized for this file
+    if(isset($_SESSION['admin'])) {
+        $owner = 1;
     } else {
-        echo "Error! Query failed: <pre>{$db->error}</pre>";
+        $request = 'SELECT `org_id` FROM `organizations` WHERE `id` = '.$_SESSION['user_id'].' AND `inn` = '.$file['inn'].' AND `kpp` = '.$file['kpp'];
+        $result = mysqli_query($db,$request);
+        $owner = mysqli_num_rows($result);
+        mysqli_free_result($result);
+    }
+
+    // Make sure the result is valid
+    if($file_n == 1 && $owner == 1) {
+        $name = $file['inn'].'-'.$file['kpp'].'-'.$file['period'].'.zip';
+
+        // Print headers
+        header('Content-Type: '. $file['type']);
+        header('Content-Length: '. $file['size']);
+        header('Content-Disposition: attachment; filename='. $name);
+
+        // Print data
+        echo $file['content'];
+    } else {
+        echo 'Error! No file exists with that ID.';
     }
 }
-
-?>

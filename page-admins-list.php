@@ -34,5 +34,3 @@ echo '</table>';
 echo $msg;
 
 echo '<br><a href="index.php?logout=1">Выйти</a>';
-
-?>
