@@ -1,7 +1,7 @@
 <?php
 
 // Session start check
-if(!session_name()) {
+if(!$welcome) {
     header('Location: index.php');
     exit;
 }
@@ -16,7 +16,7 @@ echo '<!DOCTYPE html>
     <meta charset="utf-8">
     <title>Служба деклараций</title>
     <h1><a href="index.php">Админ</a>: список пользователей</h1>
-    <table align="center" class="atable" border="1"><thead>
+    <table align="center" border="1"><thead>
     <tr>
         <th>Mail</th>
         <th>Pass</th>

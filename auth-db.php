@@ -1,10 +1,10 @@
 <?php
 
 // Session start check
-if(!session_name()) {
+if(!$welcome) {
     header('Location: index.php');
     exit;
-};
+}
 
 // Logout
 if (isset($_GET['logout'])) {
@@ -48,7 +48,13 @@ if (isset($_SESSION['user_id'])) {
             mysqli_close($db);
             exit;
         }
-        // Admin's home
+        // Import organizations
+        if (isset($_FILES['upload_org'])) {
+            include('org-import.php');
+            mysqli_close($db);
+            exit;
+        }
+        // Go to admin's home
         include('page-admins.php');
         mysqli_close($db);
         exit;

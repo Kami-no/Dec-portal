@@ -1,7 +1,7 @@
 <?php
 
 // Session start check
-if(!session_name()) {
+if(!$welcome) {
     header('Location: index.php');
     exit;
 }

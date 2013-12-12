@@ -1,7 +1,7 @@
 <?php
 
 // Session start check
-if(!session_name()) {
+if(!$welcome) {
     header('Location: index.php');
     exit;
 }
@@ -32,12 +32,12 @@ if(isset($_FILES['uploaded_files'])) {
             // Execute the query
             $result = $db->query($query);
 
-            // Check if it was successfull
+            // Check if it was successful
             if($result) {
                 $msg = 'Success! Your file was successfully added!';
             } else {
                 $msg = 'Error! Failed to insert the file'
-                   . "<pre>{$db->error}</pre>";
+                   . '<pre>{$db->error}</pre>';
             }
         //} else {
         //    $msg = 'An error accured while the file was being uploaded. '
@@ -63,7 +63,7 @@ mysqli_free_result($result);
 
 if($user_n!=1) {
     echo '<h2>Список админов</h2>
-        <table align="center" class="atable" border="1"><thead>
+        <table align="center" border="1"><thead>
             <tr><th>Mail</th></tr>
         </thead><tbody>';
 
@@ -85,7 +85,7 @@ mysqli_free_result($result);
 
 if($user_n!=0) {
     echo '<h2>Список пользователей без пароля или почты</h2>
-        <table align="center" class="atable" border="1"><thead>
+        <table align="center" border="1"><thead>
         <tr>
         <th>INN</th>
         <th>PASS</th>
@@ -103,8 +103,8 @@ if($user_n!=0) {
     echo '</table>';
 }
 
-// File upload
-echo '<h2>Загрузка файлов на сервер (можно несколько сразу)</h2>
+// Declarations upload
+echo '<h2>Загрузка файлов деклараций (можно несколько сразу)</h2>
     <form method="post" enctype="multipart/form-data">
     <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
         <tr><td>Выбирете файлы</td></tr>
@@ -117,6 +117,22 @@ echo '<h2>Загрузка файлов на сервер (можно неско
         </tr>
     </table>
     </form>';
+
+// Organizations upload
+echo '<h2>Загрузка файла с организациями</h2>
+    <form method="post" enctype="multipart/form-data">
+    <table width="350" border="0" cellpadding="1" cellspacing="1" class="box">
+        <tr><td>Выбирете файл</td></tr>
+        <tr>
+            <td>
+                <input type="hidden" name="MAX_FILE_SIZE" value="16000000">
+                <input name="upload_org" type="file">
+            </td>
+            <td width="80"><input name="upload" type="submit" class="box" id="upload" value=" Upload "></td>
+        </tr>
+    </table>
+    </form>';
+
 
 echo $msg;
 
