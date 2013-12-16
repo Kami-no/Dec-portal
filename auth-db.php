@@ -18,11 +18,17 @@ if (isset($_GET['logout'])) {
 include_once ('config-db.php');
 
 // Connect to DB
-$db = new mysqli($db_host, $db_user, $db_pass, $db_base);
+$db = new mysqli($db_host, $db_user, $db_pass, $db_base) or die('boom');
 if (mysqli_connect_errno()) {
     $msg = "MySQL connection failed: ".mysqli_connect_error();
     setcookie('err',$msg);
     header('Location: index.php');
+    exit;
+}
+
+if (isset($_GET['spam'])) {
+    include('spambot.php');
+    mysqli_close($db);
     exit;
 }
 

@@ -9,7 +9,7 @@ Features:
 - Multiple organizations with single account;
 - Multiple declaration files upload;
 - Import organizations from CSV;
+- Spam with passwords for new users;
 
 Plans:
-- Encrypted passwords;
-- Spam with passwords for new users;
+- Encrypted passwords ?
