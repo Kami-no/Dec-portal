@@ -14,13 +14,14 @@ mysqli_free_result($result);
 
 echo '<!DOCTYPE html>
     <meta charset="utf-8">
-    <title>Служба деклараций</title>
-    <h1>Пользоватль</h1>
+    <title>'.$m_company.'</title>
+    <div align="center"><img src="img/title.jpg" /></div>
+    <h1 align="center">Служба деклараций '.$m_company.'</h1>
     <table align="center" border="1"><thead>
     <tr>
     <th>ИНН</th>
     <th>КПП</th>
-    <th>Период</th>
+    <th>Комментарии</th>
     <th>Добавлено</th>
     <th></th>
     </tr></thead><tbody>';

@@ -28,7 +28,7 @@ if($file_id <= 0) {
         $owner = mysqli_num_rows($result);
         mysqli_free_result($result);
     }
-
+    
     // Make sure the result is valid
     if($file_n == 1 && $owner == 1) {
         $name = $file['inn'].'-'.$file['kpp'].'-'.$file['period'].'.zip';
@@ -36,7 +36,7 @@ if($file_id <= 0) {
         // Print headers
         header('Content-Type: '. $file['type']);
         header('Content-Length: '. $file['size']);
-        header('Content-Disposition: attachment; filename='. $name);
+        header('Content-Disposition: attachment; filename="'. $name.'"');
 
         // Print data
         echo $file['content'];

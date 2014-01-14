@@ -6,6 +6,10 @@ if(!$welcome) {
     exit;
 }
 
+//SMTP needs accurate times, and the PHP time zone MUST be set
+//This should be done in your php.ini, but this is how to do it if you don't have access to that
+date_default_timezone_set($timezone);
+
 require 'PHPMailer/PHPMailerAutoload.php';
 
 //Create a new PHPMailer instance
@@ -20,51 +24,47 @@ $mail->SMTPDebug = 2;
 //Ask for HTML-friendly debug output
 $mail->Debugoutput = 'html';
 //Set the hostname of the mail server
-$mail->Host = 'smtp.gmail.com';
-//Set the SMTP port number - 587 for authenticated TLS, a.k.a. RFC4409 SMTP submission
-$mail->Port = 587;
-//Set the encryption system to use - ssl (deprecated) or tls
-$mail->SMTPSecure = 'tls';
+$mail->Host = $m_server;
+//Set the SMTP port number - likely to be 25, 465 or 587
+$mail->Port = 25;
 //Whether to use SMTP authentication
 $mail->SMTPAuth = true;
-//Username to use for SMTP authentication - use full email address for gmail
-$mail->Username = "vdk@kami-no.ru";
+//Username to use for SMTP authentication
+$mail->Username = $m_outbox;
 //Password to use for SMTP authentication
-$mail->Password = "2E7X2XNhLSlf";
+$mail->Password = $m_pass;
 //Set who the message is to be sent from
-$mail->setFrom('vdk@kami-no.ru', 'VDK');
+$mail->setFrom($m_outbox, $m_sender);
 //Set an alternative reply-to address
-$mail->addReplyTo('vdk@kami-no.ru', 'VDK');
+$mail->addReplyTo($m_outbox, $m_sender);
+//Set who the message is to be sent to
+$mail->addAddress($import_list[$i]['mail'], 'User');
 //Set the subject line
 $mail->Subject = 'New password';
+$mail->Body = 'Добрый день!
+    <br>
+    <br>Для вас создана учётная запись на сайте <a href="http://decl.vdk.vl.ru/">Деклараций</a> компании '.$m_company.'.
+    <br>Для подключения используйте следующие данные:
+    <br> - пользователь: '.$import_list[$i]['mail'].'
+    <br> - пароль: '.$pass.'
+    <br>
+    <br>Письмо создано автоматической службой оповещения.
+    <br>
+    <br>С Уважением,
+    <br>'.$m_company;//Replace the plain text body with one created manually
+$mail->AltBody = 'Добрый день!
 
-/*
-// Запрос на список пользователей
-$query = 'SELECT `mail`, `pass` FROM `users` WHERE `pass` = 12345 LIMIT 0 , '.$_GET['spam'];
-$result = mysqli_query($db,$query);
-$spam_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
-mysqli_free_result($result);
+    Для вас создана учётная запись на сайте <a href="'.$m_site.'">Деклараций</a> компании '.$m_company.'.
+    Для подключения используйте следующие данные:
+     - пользователь: '.$import_list[$i]['mail'].'
+     - пароль: '.$pass.'
 
-for($i=0; $i<count($spam_list); $i++) {
-    //Set who the message is to be sent to
-    $mail->addAddress($spam_list[$i]['mail'], 'Клиент');
-    $mail->Body = 'Добрый день!
-        <br>
-        <br>Для вас создана учётная запись на сайте <a href="http://home.bit/alpha/decl/">Деклараций</a> компании ООО "ВДК".
-        <br>Для подключения используйте следующие данные:
-        <br> - пользователь: '.$spam_list[$i]['mail'].'
-        <br> - пароль: '.mt_rand(1000000,9999999).'
-        <br>
-        <br>С Уважением,
-        <br>ООО "ВДК"';
-    //Replace the plain text body with one created manually
-    $mail->AltBody = 'This is a plain-text message body';
+    С Уважением,
+    '.$m_company;
 
-    //send the message, check for errors
-    if (!$mail->send()) {
-        echo "Mailer Error: " . $mail->ErrorInfo;
-    } else {
-        echo "Message sent!";
-    }
+//send the message, check for errors
+if (!$mail->send()) {
+    $msg = 'Mailer Error: ' . $mail->ErrorInfo;
+} else {
+    $msg = 'mail';
 }
-*/

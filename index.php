@@ -5,6 +5,10 @@ session_start();
 $welcome = TRUE;
 
 $msg='';
+
+// Include config
+include_once ('config.php');
+
 // Go to auth-db.php
 include_once ('auth-db.php');
 
