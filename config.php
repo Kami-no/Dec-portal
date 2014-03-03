@@ -10,10 +10,12 @@ if(!$welcome) {
 $lang = 'ru';
 
 // Mail settings
-$m_outbox = 'spam@bot.com';
-$m_pass = 'Qwerty123';
-$m_server = 'mail.google.com';
-$m_site = 'http://spam.bot.ru/';
-$m_company = 'Spam Inc';
-$m_sender = 'Spam';
+$m_outbox = 'decl@vdk.vl.ru';
+$m_pass = '2E7X2XNhLSlf';
+$m_server = 'mail.vdk.vl.ru';
+$m_site = 'http://decl.vdk.vl.ru/';
+$m_company = 'ООО "ВДК"';
+$m_sender = 'VDK';
 $timezone = 'Asia/Vladivostok';
+
+$debug = FALSE;

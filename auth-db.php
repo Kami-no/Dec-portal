@@ -27,7 +27,7 @@ if (mysqli_connect_errno()) {
 }
 
 if (isset($_GET['spam'])) {
-    include('spambot.php');
+    include('spam.php');
     mysqli_close($db);
     exit;
 }
@@ -57,6 +57,12 @@ if (isset($_SESSION['user_id'])) {
         // Import organizations
         if (isset($_FILES['upload_org'])) {
             include('org-import.php');
+            mysqli_close($db);
+            exit;
+        }
+        // Send new password to user
+        if (isset($_GET['mid'])) {
+            include('includes/spam.php');
             mysqli_close($db);
             exit;
         }

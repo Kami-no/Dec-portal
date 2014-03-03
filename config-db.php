@@ -8,5 +8,5 @@ if(!$welcome) {
 
 $db_host = 'localhost';
 $db_user = 'decl';
-$db_pass = 'Qwerty123';
+$db_pass = 'kZ5KmNN6';
 $db_base = 'decl';

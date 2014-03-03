@@ -7,7 +7,7 @@ if(!$welcome) {
 }
 
 // Запрос на список пользователей
-$query = 'SELECT * FROM `users` WHERE `admin` = 0';
+$query = 'SELECT * FROM `users` WHERE `admin` = 0 ORDER BY `mail` ASC';
 $result = mysqli_query($db,$query);
 $user_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
 mysqli_free_result($result);
@@ -20,12 +20,14 @@ echo '<!DOCTYPE html>
     <tr>
         <th>Mail</th>
         <th>Pass</th>
+        <th>Сбросить пароль</th>
     </tr></thead><tbody>';
 
 for($i=0; $i<count($user_list); $i++) {
     echo '<tr>
         <td><a href="index.php?id='.$user_list[$i]['id'].'">'.$user_list[$i]['mail'].' </td>
         <td>'.$user_list[$i]['pass'].' </td>
+        <td><a href="index.php?mid='.$user_list[$i]['id'].'">Сбросить </td>
         </tr>';
 }
 

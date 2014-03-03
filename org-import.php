@@ -98,7 +98,7 @@ if($import_n!=0) {
         $import_list[$i]['mail'] = removeBOM($import_list[$i]['mail']);
         $import_list[$i]['inn'] = removeBOM($import_list[$i]['inn']);
         $import_list[$i]['kpp'] = removeBOM($import_list[$i]['kpp']);
-        $error = FALSE;
+        $msg = '';
         // Check if organization exists
         $query = 'SELECT `org_id` FROM `organizations` WHERE `inn` = "'.$import_list[$i]['inn'].'" AND `kpp` = "'.$import_list[$i]['kpp'].'"';
         $result = mysqli_query($db,$query);
@@ -114,8 +114,6 @@ if($import_n!=0) {
             if($mail_n == 0) {
                 // If no users then add one
                 $pass = mt_rand(1000000,9999999);
-                $query = 'INSERT INTO `users` (`mail`, `pass`) VALUES ("'.$import_list[$i]['mail'].'", "'.$pass.'")';
-                $result = mysqli_query($db,$query);
 
                 //Create a new PHPMailer instance
                 $mail = new PHPMailer();
@@ -140,7 +138,6 @@ if($import_n!=0) {
                 $mail->Username = $m_outbox;
                 //Password to use for SMTP authentication
                 $mail->Password = $m_pass;
-
 
                 //Set who the message is to be sent from
                 $mail->setFrom($m_outbox, 'VDK');
@@ -173,23 +170,29 @@ if($import_n!=0) {
                 //send the message, check for errors
                 if (!$mail->send()) {
                     $msg = 'Mailer Error: ' . $mail->ErrorInfo;
+                    $error = TRUE;
                 } else {
                     $msg = 'mail';
                 }
 
-                // Get user ID
-                $query = 'SELECT `id` FROM `users` WHERE `mail` = "'.$import_list[$i]['mail'].'"';
-                $result = mysqli_query($db,$query);
-                $mail_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
-                mysqli_free_result($result);
-                $msg .= '+user';
-            } else {
-                $msg = '+org';
+                if (!$error) {
+                    // Add user
+                    $query = 'INSERT INTO `users` (`mail`, `pass`) VALUES ("'.$import_list[$i]['mail'].'", "'.$pass.'")';
+                    $result = mysqli_query($db,$query);
+                    // Get user ID
+                    $query = 'SELECT `id` FROM `users` WHERE `mail` = "'.$import_list[$i]['mail'].'"';
+                    $result = mysqli_query($db,$query);
+                    $mail_list = mysqli_fetch_all($result,MYSQLI_ASSOC);
+                    mysqli_free_result($result);
+                    $msg .= '+user';
+                }
             }
             // Add new organization
-            $query = 'INSERT INTO `organizations` (`id`, `inn`, `kpp`) VALUES ("'.$mail_list[0]['id'].'", "'.$import_list[$i]['inn'].'", "'.$import_list[$i]['kpp'].'")';
-            $result = mysqli_query($db,$query);
-
+            if (!$error) {
+                $query = 'INSERT INTO `organizations` (`id`, `inn`, `kpp`) VALUES ("'.$mail_list[0]['id'].'", "'.$import_list[$i]['inn'].'", "'.$import_list[$i]['kpp'].'")';
+                $result = mysqli_query($db,$query);
+                $msg .= '+org';
+            }
         } else {
             $msg = 'exist';
         }
@@ -200,7 +203,7 @@ if($import_n!=0) {
             <td>'.$msg.' </td>
         </tr>';
         // Remove used line if no error
-        if(!$error) {
+        if (!$error) {
             $query = 'DELETE FROM `import` WHERE `imp_id` = '.$import_list[$i]['imp_id'];
             $result = mysqli_query($db,$query);
         }

@@ -17,6 +17,12 @@ echo '<!DOCTYPE html>
     <title>'.$m_company.'</title>
     <div align="center"><img src="img/title.jpg" /></div>
     <h1 align="center">Служба деклараций '.$m_company.'</h1>
+    Архив содержит три файла:
+    <ul>
+        <li>Производители - файл для импорта производителей в программу Декларант-Алко;</li>
+        <li>Поставки - файл для импорта поставок в программу Декларант-Алко;</li>
+        <li>АктСверки - акт сверки в формате Excel 2007;</li>
+    <ul>
     <table align="center" border="1"><thead>
     <tr>
     <th>ИНН</th>
